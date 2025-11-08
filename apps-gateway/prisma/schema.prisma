@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+model User {
+id String @id @default(cuid())
+email String @unique
+name String?
+apiKeys ApiKey[]
+savedRecipes SavedRecipe[]
+createdAt DateTime @default(now())
+}
+model ApiKey {
+id String @id @default(cuid())
+keyHash String @unique
+label String?
+userId String
+user User @relation(fields: [userId], references: [id])
+createdAt DateTime @default(now())
+lastUsed DateTime?
+}
+model SavedRecipe {
+id String @id @default(cuid())
+userId String
+user User @relation(fields: [userId], references: [id])
+name String
+spec Json
+createdAt DateTime @default(now())
+}
