@@ -1,0 +1,9 @@
+id: weather.open-meteo
+baseUrl: https://api.open-meteo.com
+endpoint: /v1/forecast
+query:
+  latitude: number
+  longitude: number
+  current_weather: boolean
+cache:
+  ttl: 300
