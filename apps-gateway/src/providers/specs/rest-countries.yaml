@@ -1,0 +1,7 @@
+id: rest-countries
+baseUrl: https://restcountries.com
+endpoint: /v3.1/name/
+query:
+  name: string
+cache:
+  ttl: 86400
