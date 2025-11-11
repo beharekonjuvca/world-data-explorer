@@ -1,0 +1,8 @@
+id: exchange-rate
+baseUrl: https://api.exchangerate.host
+endpoint: /latest
+query:
+  base: string
+  symbols: string
+cache:
+  ttl: 600

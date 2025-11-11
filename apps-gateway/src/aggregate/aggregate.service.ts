@@ -47,6 +47,11 @@ export class AggregateService {
         await import('../providers/transforms/restcountries.transform.js')
       ).normalizeRestCountries(body);
     }
+    if (id === 'exchange-rate') {
+      data = (
+        await import('../providers/transforms/exchange-rate.transform.js')
+      ).normalizeExchangeRate(body);
+    }
 
     await this.cache.set(key, data, spec.cache?.ttl ?? 60, true);
     return { id, data, cache: false };
