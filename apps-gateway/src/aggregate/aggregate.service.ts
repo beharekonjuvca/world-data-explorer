@@ -52,6 +52,11 @@ export class AggregateService {
         await import('../providers/transforms/exchange-rate.transform.js')
       ).normalizeExchangeRate(body);
     }
+    if (id === 'openaq') {
+      data = (
+        await import('../providers/transforms/openaq.transform.js')
+      ).normalizeOpenAQ(body);
+    }
 
     await this.cache.set(key, data, spec.cache?.ttl ?? 60, true);
     return { id, data, cache: false };

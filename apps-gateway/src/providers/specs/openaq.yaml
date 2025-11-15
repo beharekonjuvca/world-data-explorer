@@ -1,0 +1,9 @@
+id: openaq
+baseUrl: https://api.openaq.org
+endpoint: /v2/latest
+query:
+  country: string # ISO-2 code, e.g. XK
+  city: string # e.g. Pristina
+  limit: number # default 1
+cache:
+  ttl: 600
